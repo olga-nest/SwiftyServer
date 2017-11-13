@@ -21,7 +21,13 @@ class Store: NSObject {
     }
     
     func allItems() -> [String] {
-        return Array(allInfo.values)
+        var tempArr = [String]()
+        
+        for (k, v) in allInfo {
+            tempArr.append("\(k) \(v)")
+        }
+        
+        return tempArr
     }
     
     func get(key: String) -> String? {
