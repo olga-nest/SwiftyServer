@@ -60,6 +60,11 @@ extension Droplet {
             return "You stored value:\(value) \n"
         }
         
+        get("getAllInStore") { req in
+            let all = store.allItems()
+            return "\(all)"
+        }
+        
         try resource("posts", PostController.self)
     }
 }
