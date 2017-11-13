@@ -2,6 +2,8 @@ import Vapor
 
 extension Droplet {
     func setupRoutes() throws {
+        
+        //MARK: Get
         get("hello") { req in
             var json = JSON()
             try json.set("hello", "world\n")
@@ -35,6 +37,14 @@ extension Droplet {
         }
 
         get("description") { req in return req.description }
+        
+        //MARK: Post
+        post("user") { req in
+            guard let name = req.data["name"]?.string else {
+                return "Error retriving parameter/s\n"
+            }
+            return "Hello, \(name)\n"
+        }
         
         try resource("posts", PostController.self)
     }
