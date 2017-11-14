@@ -12,24 +12,18 @@ import Fluent
 class Store: NSObject {
    
     //MARK: Properties
-//    var storeKey = ""
-//    var storeValue = ""
     var allInfo = [String: String]()
     
     let defaults = UserDefaults.standard
     
     
     func set(key: String, value: String){
-       defaults.removeObject(forKey: "allInfo")
+        defaults.removeObject(forKey: "allInfo")
         allInfo[key] = value
         if defaults.object(forKey: "allInfo") == nil {
             setDict(dict: allInfo as NSDictionary)
         } else {
-//        let object =
-            
-//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:jsonObject];
-//            [data writeToFile:path atomically:YES
-           defaults.setValue(value, forKey: key)
+            defaults.setValue(value, forKey: key)
         }
     }
     
@@ -61,5 +55,5 @@ class Store: NSObject {
         return tempDict
     }
     
-   
+    
 }
