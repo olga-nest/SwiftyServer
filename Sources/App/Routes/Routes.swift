@@ -65,6 +65,14 @@ extension Droplet {
             return "\(all)"
         }
         
+        get("get") { req in
+            guard let key = req.data["key"]?.string else {
+               return "Error retriving parameter/s\n"
+            }
+            let valueForKey = store.get(key: key)!
+            return "\(valueForKey)\n"
+        }
+        
         try resource("posts", PostController.self)
     }
 }

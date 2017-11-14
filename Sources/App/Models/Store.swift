@@ -44,7 +44,9 @@ class Store: NSObject {
     }
     
     func get(key: String) -> String? {
-        return allInfo[key]
+        let dictionary = getDict()
+        let temp = dictionary[key]
+        return temp
     }
     
     func setDict(dict: NSDictionary) {
@@ -52,11 +54,11 @@ class Store: NSObject {
         defaults.set(data, forKey:"allInfo")
     }
     
-     func getDict() -> NSDictionary {
+    func getDict() -> Dictionary<String, String> {
         let data = defaults.object(forKey: "allInfo") as! NSData
         let object = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! NSDictionary
         let tempDict = object as! [String : String]
-        return tempDict as NSDictionary
+        return tempDict
     }
     
    
