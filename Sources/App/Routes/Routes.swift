@@ -40,7 +40,7 @@ extension Droplet {
 
         get("description") { req in return req.description }
         
-        //MARK: Post
+        //MARK: Storing Data
         post("user") { req in
             guard let name = req.data["name"]?.string else {
                 return "Error getting parameter/s\n"
@@ -56,7 +56,6 @@ extension Droplet {
                  return "Error getting parameter/s\n"
             }
             store.set(key: key, value: value)
-          //  let tempV = store.value(forKey: key)
             return "You stored value:\(value) \n"
         }
         
